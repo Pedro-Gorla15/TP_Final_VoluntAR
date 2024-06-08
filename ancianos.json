@@ -1,0 +1,50 @@
+[
+	{
+		"id": "1",
+		"nombre": "Juan Pérez",
+		"edad": 82,
+		"direccion": "Calle Falsa 123",
+		"telefono": "123456789",
+		"necesidad": "Ayuda con las compras"
+	},
+	{
+		"id": "2",
+		"nombre": "María Gómez",
+		"edad": 76,
+		"direccion": "Avenida Siempre Viva 456",
+		"telefono": "987654321",
+		"necesidad": "Acompañamiento para caminar"
+	},
+	{
+		"id": "3",
+		"nombre": "Fulano Esquina",
+		"edad": 85,
+		"direccion": "Calle Nueva 120",
+		"telefono": "7894561531",
+		"necesidad": "Acomodar muebles"
+	},
+	{
+		"id": "4",
+		"nombre": "Mengano Vereda",
+		"edad": 95,
+		"direccion": "Calle Ocho 45",
+		"telefono": "1010101000",
+		"necesidad": "Organizar medicacion"
+	},
+	{
+		"id": "5",
+		"nombre": "Pedro",
+		"edad": "84",
+		"dirección": "Yatay 240",
+		"teléfono": "1164859575",
+		"necesidad": "Compras"
+	},
+	{
+		"id": "6",
+		"nombre": "Elcano Rodriguez",
+		"edad": 88,
+		"direccion": "Suipacha 699",
+		"telefono": "7894561231",
+		"necesidad": "Traslado de mercaderia"
+	}
+]
