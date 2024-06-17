@@ -7,28 +7,48 @@ class ControladorVoluntarios {
     }
 
     obtenerVoluntarios = async (req, res) => {
-        const { id } = req.params
-        const voluntarios = await this.servicio.obtenerVoluntarios(id)
-        res.json(voluntarios)
+        try {
+            const { id } = req.params
+            const voluntarios = await this.servicio.obtenerVoluntarios(id)
+            res.json(voluntarios)
+        }
+        catch (error) {
+            res.status(500).json({ error: error.message })
+        }
     }
 
     guardarVoluntario = async (req, res) => {
-        const voluntario = req.body
-        const voluntarioGuardado = await this.servicio.guardarVoluntario(voluntario)
-        res.json(voluntarioGuardado)
+        try {
+            const voluntario = req.body
+            const voluntarioGuardado = await this.servicio.guardarVoluntario(voluntario)
+            res.json(voluntarioGuardado)
+        }
+        catch (error) {
+            res.status(500).json({ error: error.message })
+        }
     }
 
     actualizarVoluntario = async (req, res) => {
-        const { id } = req.params
-        const voluntario = req.body
-        const voluntarioActualizado = await this.servicio.actualizarVoluntario(id, voluntario)
-        res.json(voluntarioActualizado)
+        try {
+            const { id } = req.params
+            const voluntario = req.body
+            const voluntarioActualizado = await this.servicio.actualizarVoluntario(id, voluntario)
+            res.json(voluntarioActualizado)
+        }
+        catch (error) {
+            res.status(500).json({ error: error.message })
+        }
     }
 
     borrarVoluntario = async (req, res) => {
-        const { id } = req.params
-        const voluntarioEliminado = await this.servicio.borrarVoluntario(id)
-        res.json(voluntarioEliminado)
+        try {
+            const { id } = req.params
+            const voluntarioEliminado = await this.servicio.borrarVoluntario(id)
+            res.json(voluntarioEliminado)
+        }
+        catch (error) {
+            res.status(500).json({ error: error.message })
+        }
     }
 }
 
