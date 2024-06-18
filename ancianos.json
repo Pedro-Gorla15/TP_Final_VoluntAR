@@ -32,14 +32,6 @@
 		"necesidad": "Organizar medicacion"
 	},
 	{
-		"id": "5",
-		"nombre": "Pedro",
-		"edad": "84",
-		"dirección": "Yatay 240",
-		"teléfono": "1164859575",
-		"necesidad": "Compras"
-	},
-	{
 		"id": "6",
 		"nombre": "Elcano Rodriguez",
 		"edad": 88,
