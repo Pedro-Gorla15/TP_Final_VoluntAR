@@ -24,15 +24,19 @@ class ServicioAncianos {
             const ancianoGuardado = await this.model.guardarAnciano(anciano)
             return ancianoGuardado
         } else {
-            console.log(res.error)
-            throw res.error
+            throw new Error(res.error)
         }
     }
 
     actualizarAnciano = async (id, anciano) => {
-        anciano.edad = Number(anciano.edad)
-        const ancianoActualizado = await this.model.actualizarAnciano(id, anciano)
-        return ancianoActualizado
+        const res = validar(anciano)
+        if (res.result) {
+            anciano.edad = Number(anciano.edad)
+            const ancianoActualizado = await this.model.actualizarAnciano(id, anciano)
+            return ancianoActualizado
+        } else {
+            throw new Error(res.error)
+        }
     }
 
     borrarAnciano = async id => {

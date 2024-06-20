@@ -4,26 +4,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Ingrese sus datos y necesidades </title>
+    <title>Servidor VoluntAR</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: white;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .btn-custom {
+            background-color: darkgreen;
+            color: white;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-submit {
+            margin-top: 0px;
+
+        }
+    </style>
 </head>
 
 <body>
+    <div class="container text-center">
+        <h1>Servidor VoluntAR</h1>
+        <div class="mt-5">
+            <button id="addAncianoBtn" class="btn btn-custom btn-lg mr-3">Agregar Anciano</button>
+            <button id="addVoluntarioBtn" class="btn btn-custom btn-lg">Agregar Voluntario</button>
+        </div>
+        <div id="formContainer" class="mt-5">
 
+        </div>
+    </div>
 
-    <form action="/api/ancianos" method="post">
+    <script>
+        document.getElementById('addAncianoBtn').addEventListener('click', () => {
+            document.getElementById('formContainer').innerHTML = `
+                <h2>Agregar Anciano</h2>
+                <form action="/api/ancianos" method="post">
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" class="form-control" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edad">Edad</label>
+                        <input type="number" class="form-control" name="edad" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="direccion">Dirección</label>
+                        <input type="text" class="form-control" name="direccion" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Teléfono</label>
+                        <input type="text" class="form-control" name="telefono" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="necesidad">Necesidad</label>
+                        <input type="text" class="form-control" name="necesidad" required>
+                    </div>
+                    <button type="submit" class="btn btn-custom btn-submit">Enviar</button>
+                </form>
+            `;
+        });
 
-        Nombre <input type="text" name="nombre"><br><br>
-        Edad <input type="number" name="edad"><br><br>
-        Dirección <input type="text" name="direccion"><br><br>
-        Teléfono <input type="text" name="telefono"><br><br>
-        Necesidad <input type="text" name="necesidad"><br><br><br>
-
-        <button> Enviar </button>
-
-    </form>
-
-
-
+        document.getElementById('addVoluntarioBtn').addEventListener('click', () => {
+            document.getElementById('formContainer').innerHTML = `
+                <h2>Agregar Voluntario</h2>
+                <form action="/api/voluntarios" method="post">
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" class="form-control" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edad">Edad</label>
+                        <input type="number" class="form-control" name="edad" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="direccion">Dirección</label>
+                        <input type="text" class="form-control" name="direccion" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Teléfono</label>
+                        <input type="text" class="form-control" name="telefono" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="habilidades">Habilidades (separadas por comas)</label>
+                        <input type="text" class="form-control" name="habilidades" required>
+                    </div>
+                    <button type="submit" class="btn btn-custom btn-submit">Enviar</button>
+                </form>
+            `;
+        });
+    </script>
 </body>
 
 </html>

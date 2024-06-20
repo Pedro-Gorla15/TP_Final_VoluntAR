@@ -4,7 +4,7 @@ class ControladorVoluntarios {
 
     constructor() {
         this.servicio = new ServicioVoluntarios()
-        
+
     }
 
     obtenerVoluntarios = async (req, res) => {
@@ -21,11 +21,15 @@ class ControladorVoluntarios {
     guardarVoluntario = async (req, res) => {
         try {
             const voluntario = req.body
+
+            if (voluntario.habilidades) {
+                voluntario.habilidades = voluntario.habilidades.split(',').map(habilidad => habilidad.trim())
+            }
             const voluntarioGuardado = await this.servicio.guardarVoluntario(voluntario)
             res.json(voluntarioGuardado)
         }
         catch (error) {
-            res.status(500).json({ error: error.message })
+            res.status(400).json({ error: error.message })
         }
     }
 
@@ -33,11 +37,15 @@ class ControladorVoluntarios {
         try {
             const { id } = req.params
             const voluntario = req.body
+
+            if (voluntario.habilidades) {
+                voluntario.habilidades = voluntario.habilidades.split(',').map(habilidad => habilidad.trim())
+            }
             const voluntarioActualizado = await this.servicio.actualizarVoluntario(id, voluntario)
             res.json(voluntarioActualizado)
         }
         catch (error) {
-            res.status(500).json({ error: error.message })
+            res.status(400).json({ error: error.message })
         }
     }
 

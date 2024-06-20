@@ -29,16 +29,24 @@ class ControladorAncianos {
     }
 
     actualizarAnciano = async (req, res) => {
-        const { id } = req.params
-        const anciano = req.body
-        const ancianoActualizado = await this.servicio.actualizarAnciano(id, anciano)
-        res.json(ancianoActualizado)
+        try {
+            const { id } = req.params
+            const anciano = req.body
+            const ancianoActualizado = await this.servicio.actualizarAnciano(id, anciano)
+            res.json(ancianoActualizado)
+        } catch (error) {
+            res.status(400).json({ error: error.message }) // Enviar el mensaje de error al navegador
+        }
     }
 
     borrarAnciano = async (req, res) => {
-        const { id } = req.params
-        const ancianoEliminado = await this.servicio.borrarAnciano(id)
-        res.json(ancianoEliminado)
+        try {
+            const { id } = req.params
+            const ancianoEliminado = await this.servicio.borrarAnciano(id)
+            res.json(ancianoEliminado)
+        } catch (error) {
+            res.status(500).json({ error: error.message })
+        }
     }
 }
 
