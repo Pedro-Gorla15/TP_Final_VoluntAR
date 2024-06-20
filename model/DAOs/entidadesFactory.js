@@ -4,6 +4,7 @@ import VoluntariosMongoDB from "./voluntariosMongoDB.js"
 import AncianosFile from "./ancianosFile.js"
 import AncianosMem from "./ancianosMem.js"
 import AncianosMongoDB from "./ancianosMongoDB.js"
+import ConexionesMongoDB from "./conexionesMongoDB.js"
 
 class ModelFactory {
     static get(tipo, entidad) {
@@ -37,6 +38,15 @@ class ModelFactory {
                     default:
                         console.log('*** Persistiendo Ancianos en Memoria (default) ***')
                         return new AncianosMem()
+                }
+            case 'conexiones':
+                switch (tipo) {
+                    case 'MONGODB':
+                        console.log('*** Persistiendo Conexiones en MongoDB ***')
+                        return new ConexionesMongoDB()
+                    default:
+                        console.log('*** Persistiendo Conexiones en Memoria (default) ***')
+                        return new ConexionesMongoDB() // Por simplicidad, solo MongoDB 
                 }
         }
     }

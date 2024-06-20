@@ -18,6 +18,15 @@ class ControladorConexion {
             }
         }
     }
+
+    listarConexiones = async (req, res) => {
+        try {
+            const conexiones = await this.servicio.obtenerConexiones()
+            res.json(conexiones)
+        } catch (error) {
+            res.status(500).json({ error: error.message })
+        }
+    }
 }
 
 export default ControladorConexion

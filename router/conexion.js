@@ -9,6 +9,7 @@ class RouterConexion {
 
     start() {
         this.router.get('/:idAnciano/:idVoluntario', this.controlador.obtenerConexion)
+        this.router.get('/', this.controlador.listarConexiones)
         return this.router
     }
 }
