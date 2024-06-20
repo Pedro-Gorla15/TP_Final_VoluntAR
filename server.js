@@ -29,5 +29,5 @@ if (config.MODO_PERSISTENCIA == 'MONGODB') {
 
 
 const PORT = 8080
-const server = app.listen(PORT, () => console.log(`Servidor ApiRestFul escuchando en http://localhost:${PORT}`))
+const server = app.listen(PORT, () => console.log(`Servidor VoluntAR escuchando en http://localhost:${PORT}`))
 server.on('error', error => console.log(`Error en servidor: ${error.message}`))
