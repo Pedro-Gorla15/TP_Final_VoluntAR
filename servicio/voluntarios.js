@@ -1,5 +1,6 @@
 import ModelFactory from '../model/DAOs/entidadesFactory.js'
 import config from '../config.js'
+import { validar } from './validaciones/voluntarios.js'
 
 class ServicioVoluntarios {
     constructor() {
@@ -17,13 +18,26 @@ class ServicioVoluntarios {
     }
 
     guardarVoluntario = async voluntario => {
-        const voluntarioGuardado = await this.model.guardarVoluntario(voluntario)
-        return voluntarioGuardado
+        const res = validar(voluntario)
+        if (res.result) {
+            voluntario.habilidades = voluntario.habilidades.split(',').map(habilidad => habilidad.trim())
+            voluntario.edad = Number(voluntario.edad)
+            const voluntarioGuardado = await this.model.guardarVoluntario(voluntario)
+            return voluntarioGuardado
+        } else {
+            throw new Error(res.error)
+        }
     }
 
     actualizarVoluntario = async (id, voluntario) => {
-        const voluntarioActualizado = await this.model.actualizarVoluntario(id, voluntario)
-        return voluntarioActualizado
+        const res = validar(voluntario)
+        if (res.result) {
+            voluntario.habilidades = voluntario.habilidades.split(',').map(habilidad => habilidad.trim())
+            const voluntarioActualizado = await this.model.actualizarVoluntario(id, voluntario)
+            return voluntarioActualizado
+        } else {
+            throw new Error(res.error)
+        }
     }
 
     borrarVoluntario = async id => {
