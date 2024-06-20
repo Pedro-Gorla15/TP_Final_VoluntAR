@@ -4,6 +4,7 @@ class ControladorVoluntarios {
 
     constructor() {
         this.servicio = new ServicioVoluntarios()
+        
     }
 
     obtenerVoluntarios = async (req, res) => {
