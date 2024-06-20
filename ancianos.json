@@ -38,5 +38,13 @@
 		"direccion": "Suipacha 699",
 		"telefono": "7894561231",
 		"necesidad": "Traslado de mercaderia"
+	},
+	{
+		"id": "7",
+		"nombre": "Pedro Gorla",
+		"edad": 95,
+		"direccion": "Corrientes 9596",
+		"telefono": "1165353629",
+		"necesidad": "Compras"
 	}
 ]
