@@ -35,7 +35,7 @@ class ControladorAncianos {
             const ancianoActualizado = await this.servicio.actualizarAnciano(id, anciano)
             res.json(ancianoActualizado)
         } catch (error) {
-            res.status(400).json({ error: error.message }) // Enviar el mensaje de error al navegador
+            res.status(400).json({ error: error.message })
         }
     }
 
