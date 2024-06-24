@@ -16,6 +16,7 @@ export const validar = anciano => {
         telefono: Joi.string().required().messages(mensajesError),
         direccion: Joi.string().required().messages(mensajesError),
         necesidad: Joi.string().required().messages(mensajesError),
+        fotoPerfil: Joi.string().optional().messages(mensajesError)
     })
 
     const { error } = ancianoSchema.validate(anciano)

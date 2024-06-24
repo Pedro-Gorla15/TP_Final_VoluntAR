@@ -1,30 +1,34 @@
 import ServicioAncianos from '../servicio/ancianos.js'
+import path from 'path'
+
+
+
 
 class ControladorAncianos {
-
     constructor() {
-        this.servicio = new ServicioAncianos()
+        this.servicio = new ServicioAncianos();
     }
 
     obtenerAncianos = async (req, res) => {
         try {
-            const { id } = req.params
-            const ancianos = await this.servicio.obtenerAncianos(id)
-            res.json(ancianos)
+            const { id } = req.params;
+            const ancianos = await this.servicio.obtenerAncianos(id);
+            res.json(ancianos);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
         }
-        catch (error) {
-            res.status(500).json({ error: error.message })
-        }
-    }
+    };
 
     guardarAnciano = async (req, res) => {
         try {
-            const anciano = req.body
-            const ancianoGuardado = await this.servicio.guardarAnciano(anciano)
-            res.json(ancianoGuardado)
-        }
-        catch (error) {
-            res.status(500).json({ error: error.message })
+            const anciano = req.body;
+            if (req.file) {
+                anciano.fotoPerfil = path.join('uploads', req.file.filename);
+            }
+            const ancianoGuardado = await this.servicio.guardarAnciano(anciano);
+            res.json(ancianoGuardado);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
         }
     }
 

@@ -18,6 +18,7 @@ export const validar = voluntario => {
             'string.pattern.base': 'El campo {#label} debe ser una lista de habilidades separadas por comas sin caracteres especiales',
             ...mensajesError
         }),
+        fotoPerfil: Joi.string().optional().messages(mensajesError)
     })
 
     const { error } = voluntarioSchema.validate(voluntario)

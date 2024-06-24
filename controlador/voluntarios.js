@@ -1,30 +1,33 @@
 import ServicioVoluntarios from '../servicio/voluntarios.js'
+import path from 'path'
+
+
 
 class ControladorVoluntarios {
-
     constructor() {
-        this.servicio = new ServicioVoluntarios()
+        this.servicio = new ServicioVoluntarios();
     }
 
     obtenerVoluntarios = async (req, res) => {
         try {
-            const { id } = req.params
-            const voluntarios = await this.servicio.obtenerVoluntarios(id)
-            res.json(voluntarios)
-        }
-        catch (error) {
-            res.status(500).json({ error: error.message })
+            const { id } = req.params;
+            const voluntarios = await this.servicio.obtenerVoluntarios(id);
+            res.json(voluntarios);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
         }
     }
 
     guardarVoluntario = async (req, res) => {
         try {
-            const voluntario = req.body
-            const voluntarioGuardado = await this.servicio.guardarVoluntario(voluntario)
-            res.json(voluntarioGuardado)
-        }
-        catch (error) {
-            res.status(400).json({ error: error.message })
+            const voluntario = req.body;
+            if (req.file) {
+                voluntario.fotoPerfil = path.join('uploads', req.file.filename);
+            }
+            const voluntarioGuardado = await this.servicio.guardarVoluntario(voluntario);
+            res.json(voluntarioGuardado);
+        } catch (error) {
+            res.status(400).json({ error: error.message });
         }
     }
 
